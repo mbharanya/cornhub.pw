@@ -1,0 +1,28 @@
+.header-panel {
+	background-color: #0D47A1;
+	height: 144px;
+	position: relative;
+	z-index: 3;
+}
+
+.header-panel h1 {
+	font-size: 55pt;
+	color: #FFF;
+	bottom: 10px;
+	text-align: center;
+}
+
+.mainpage{
+	position: absolute;
+	top: 100px;
+	margin-left: auto;
+	margin-right: auto;
+	left: 0;
+	right: 0;
+	z-index: 4;
+}
+
+img{
+	margin: auto!important;
+	cursor: pointer;
+}
