@@ -1,25 +1,31 @@
-var keywords = ['chungus'];
+var subreddits = ['chungus'];
 
-var refreshImage = function() {
-	var rndIndex = Math.round(Math.random()*(keywords.length-1));
+let images = [];
 
-	$.getJSON("https://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?", {
-		tags: keywords[rndIndex],
-		tagmode: "any",
-		format: "json"
-	}, function(data) {
-		console.debug(keywords[rndIndex]);
-		var rnd = Math.floor(Math.random() * data.items.length);
-		var image_src = data.items[rnd]['media']['m'].replace("_m", "_b");
-		console.log(image_src);
-		$('#random-image').hide().html('<img src="'+image_src+'">').fadeIn();
-		var createdImg = $('img');
-		createdImg.addClass('img-responsive');
-		createdImg.on('click', function(event) {
-			refreshImage();
-		});
-
+$.getJSON(`https://www.reddit.com/r/${subreddits.join('+')}/.json`, {
+	tagmode: "any",
+	format: "json"
+}, function (response) {
+	const validChildren = response.data.children.filter(child => !!child.data.preview).map(c => c.data.preview)
+	const imgs = validChildren.flatMap((child) => {
+		return child.images.flatMap(img => img.source.url)
 	});
+
+	images = imgs;
+	console.log(imgs)
+});
+
+var refreshImage = function () {
+	const rnd = Math.floor(Math.random() * images.length);
+	document.querySelector('#random-image').src = images[rnd];
 };
+
+$('#random-image').on('click', function (event) {
+	refreshImage();
+});
+
+function failedLoading(){
+	document.querySelector('#random-image').src = 'chunkus.jpg'
+}
 
 $(document).ready(refreshImage());
