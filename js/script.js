@@ -13,6 +13,10 @@ $.getJSON(`https://www.reddit.com/r/${subreddits.join('+')}/.json`, {
 
 	images = imgs;
 	console.log(imgs);
+	
+	$('#random-image').on('click', function (event) {
+		refreshImage();
+	});
 	refreshImage();
 });
 
@@ -21,9 +25,6 @@ var refreshImage = function () {
 	document.querySelector('#random-image').src = decodeHTML(images[rnd]);
 };
 
-$('#random-image').on('click', function (event) {
-	refreshImage();
-});
 
 function failedLoading(){
 	console.log("failed to open images, displaying default");
