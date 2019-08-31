@@ -25,7 +25,8 @@ $('#random-image').on('click', function (event) {
 });
 
 function failedLoading(){
-	document.querySelector('#random-image').src = 'chunkus.jpg'
+	console.log("failed to open images, displaying default");
+	document.querySelector('#random-image').src = 'chungus.jpg'
 }
 
 $(document).ready(refreshImage());
