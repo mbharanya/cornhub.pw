@@ -12,12 +12,13 @@ $.getJSON(`https://www.reddit.com/r/${subreddits.join('+')}/.json`, {
 	});
 
 	images = imgs;
-	console.log(imgs)
+	console.log(imgs);
+	refreshImage();
 });
 
 var refreshImage = function () {
 	const rnd = Math.floor(Math.random() * images.length);
-	document.querySelector('#random-image').src = images[rnd];
+	document.querySelector('#random-image').src = decodeHTML(images[rnd]);
 };
 
 $('#random-image').on('click', function (event) {
@@ -29,4 +30,8 @@ function failedLoading(){
 	document.querySelector('#random-image').src = 'chungus.jpg'
 }
 
-$(document).ready(refreshImage());
+var decodeHTML = function (html) {
+	var txt = document.createElement('textarea');
+	txt.innerHTML = html;
+	return txt.value;
+};
