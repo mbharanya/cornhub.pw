@@ -3,8 +3,7 @@ var subreddits = ['chungus'];
 let images = [];
 
 $.getJSON(`https://www.reddit.com/r/${subreddits.join('+')}/.json`, {
-	tagmode: "any",
-	format: "json"
+	raw_json: "1"
 }, function (response) {
 	const validChildren = response.data.children.filter(child => !!child.data.preview).map(c => c.data.preview)
 	const imgs = validChildren.flatMap((child) => {
@@ -22,7 +21,7 @@ $.getJSON(`https://www.reddit.com/r/${subreddits.join('+')}/.json`, {
 
 var refreshImage = function () {
 	const rnd = Math.floor(Math.random() * images.length);
-	document.querySelector('#random-image').src = decodeHTML(images[rnd]);
+	document.querySelector('#random-image').src = images[rnd];
 };
 
 
@@ -30,9 +29,3 @@ function failedLoading(){
 	console.log("failed to open images, displaying default");
 	document.querySelector('#random-image').src = 'chungus.jpg'
 }
-
-var decodeHTML = function (html) {
-	var txt = document.createElement('textarea');
-	txt.innerHTML = html;
-	return txt.value;
-};
