@@ -18,7 +18,7 @@ $.getJSON(`https://www.reddit.com/r/${subreddits.join('+')}/.json`, {
 		refreshImage();
 	});
 	refreshImage();
-});
+}).fail(failedLoading);
 
 var refreshImage = function () {
 	const rnd = Math.floor(Math.random() * images.length);
