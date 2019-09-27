@@ -34,7 +34,8 @@ main {
 
 .image-wrapper {
     padding: 1rem;
-    box-shadow: 0 0 20px black;
+    box-shadow: 0 0 20px white;
+    background-color: white;
 }
 
 footer {
@@ -58,6 +59,6 @@ img {
     background: #FF9900;
     color: #000000;
     border-radius: 1vw;
-    padding: 0 1vw 1vw 1vw;
+    padding: 1vw 1vw 0vw 1vw;
     display: inline-block;
 }
