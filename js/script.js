@@ -1,4 +1,4 @@
-var subreddits = ['chungus'];
+var subreddits = ['corn'];
 
 let images = [];
 
@@ -33,5 +33,5 @@ var refreshImage = function () {
 
 function failedLoading() {
 	console.log("failed to open images, displaying default");
-	document.querySelector('#random-image').src = 'chungus.jpg'
+	document.querySelector('#random-image').src = 'corn.jpg'
 }
