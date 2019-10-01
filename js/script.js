@@ -1,4 +1,4 @@
-var subreddits = ['corn'];
+var subreddits = ['corn', 'CornHate', 'cornhub'];
 
 let images = [];
 
